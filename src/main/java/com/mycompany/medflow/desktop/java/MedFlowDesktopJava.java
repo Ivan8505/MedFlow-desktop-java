@@ -4,13 +4,17 @@
 
 package com.mycompany.medflow.desktop.java;
 
+import UI.AppFrames;
+
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class MedFlowDesktopJava {
 
     public static void main(String[] args) {
         System.out.println("Hello World!");
+        AppFrames app = new AppFrames();
+        app.setVisible(true);
     }
 }
