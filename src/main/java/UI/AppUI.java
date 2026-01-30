@@ -4,18 +4,19 @@
  */
 package UI;
 
+
 /**
  *
  * @author ivan
  */
-public class AppFrames extends javax.swing.JFrame {
+public class AppUI extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AppFrames.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AppUI.class.getName());
 
     /**
-     * Creates new form Login
+     * Creates new form AppUI
      */
-    public AppFrames() {
+    public AppUI() {
         initComponents();
     }
 
@@ -27,21 +28,28 @@ public class AppFrames extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
+
+        login2 = new UI.Layouts.Login();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("MedFlow");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setExtendedState(this.MAXIMIZED_BOTH);
+        getContentPane().setLayout(new java.awt.GridBagLayout());
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
+        login2.setPreferredSize(new java.awt.Dimension(300, 400));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.ipadx = 107;
+        gridBagConstraints.ipady = 77;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
+        gridBagConstraints.insets = new java.awt.Insets(150, 200, 150, 200);
+        getContentPane().add(login2, gridBagConstraints);
 
-        pack();
+        setSize(new java.awt.Dimension(800, 637));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -66,9 +74,10 @@ public class AppFrames extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new AppFrames().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new AppUI().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private UI.Layouts.Login login2;
     // End of variables declaration//GEN-END:variables
 }

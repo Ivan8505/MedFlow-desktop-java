@@ -4,7 +4,7 @@
 
 package com.mycompany.medflow.desktop.java;
 
-import UI.AppFrames;
+import UI.AppUI;
 
 /**
  *
@@ -13,8 +13,8 @@ import UI.AppFrames;
 public class MedFlowDesktopJava {
 
     public static void main(String[] args) {
-        System.out.println("Hello World!");
-        AppFrames app = new AppFrames();
+        //System.out.println("Hello World!");
+        AppUI app = new AppUI();
         app.setVisible(true);
     }
 }
