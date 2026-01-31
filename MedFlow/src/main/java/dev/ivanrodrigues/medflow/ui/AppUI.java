@@ -20,6 +20,7 @@ public class AppUI extends javax.swing.JFrame {
     
     public AppUI() {
         initComponents();
+        jMenuBar2.setVisible(false);
     }
 
     /**
@@ -35,11 +36,16 @@ public class AppUI extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         login1 = new dev.ivanrodrigues.medflow.ui.layouts.Login();
+        pageAdmin1 = new dev.ivanrodrigues.medflow.ui.layouts.PageAdmin();
+        pageAdmin2 = new dev.ivanrodrigues.medflow.ui.layouts.PageAdmin();
+        jMenuBar2 = new javax.swing.JMenuBar();
+        jMenu3 = new javax.swing.JMenu();
+        jMenu4 = new javax.swing.JMenu();
+        jMenu1 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("MedFlow");
+        setTitle("Login");
         setExtendedState(this.MAXIMIZED_BOTH);
-        setPreferredSize(new java.awt.Dimension(800, 600));
         setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -50,6 +56,43 @@ public class AppUI extends javax.swing.JFrame {
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(150, 200, 150, 200);
         getContentPane().add(login1, gridBagConstraints);
+
+        javax.swing.GroupLayout pageAdmin1Layout = new javax.swing.GroupLayout(pageAdmin1);
+        pageAdmin1.setLayout(pageAdmin1Layout);
+        pageAdmin1Layout.setHorizontalGroup(
+            pageAdmin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pageAdmin1Layout.setVerticalGroup(
+            pageAdmin1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pageAdmin1, new java.awt.GridBagConstraints());
+
+        javax.swing.GroupLayout pageAdmin2Layout = new javax.swing.GroupLayout(pageAdmin2);
+        pageAdmin2.setLayout(pageAdmin2Layout);
+        pageAdmin2Layout.setHorizontalGroup(
+            pageAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        pageAdmin2Layout.setVerticalGroup(
+            pageAdmin2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        getContentPane().add(pageAdmin2, new java.awt.GridBagConstraints());
+
+        jMenu3.setText("User");
+        jMenuBar2.add(jMenu3);
+
+        jMenu4.setText("Administration");
+        jMenuBar2.add(jMenu4);
+
+        jMenu1.setText("Dashboard");
+        jMenuBar2.add(jMenu1);
+
+        setJMenuBar(jMenuBar2);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -82,6 +125,20 @@ public class AppUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenuBar jMenuBar2;
     private dev.ivanrodrigues.medflow.ui.layouts.Login login1;
+    private dev.ivanrodrigues.medflow.ui.layouts.PageAdmin pageAdmin1;
+    private dev.ivanrodrigues.medflow.ui.layouts.PageAdmin pageAdmin2;
     // End of variables declaration//GEN-END:variables
+
+    //Code criado por MIM ivan8505
+    public void admin(){
+        jMenuBar2.setVisible(true);
+    }
+
+
+
 }

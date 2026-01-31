@@ -5,6 +5,7 @@
 
 package dev.ivanrodrigues.medflow.controller;
 
+import dev.ivanrodrigues.medflow.rules.Authentication;
 import dev.ivanrodrigues.medflow.rules.AuthenticationRule;
 
 /**
@@ -13,10 +14,10 @@ import dev.ivanrodrigues.medflow.rules.AuthenticationRule;
  */
 
 public class AuthenticationController {
-    
+
     private String nomeUser;
     private String passwdUser;
-
+    
     public String getNomeUser() {
         return nomeUser;
     }
@@ -37,17 +38,15 @@ public class AuthenticationController {
         this.nomeUser = nomeUser;
         this.passwdUser = passwdUser;
     }
-    
-    public void Login(){
-        System.out.println(getNomeUser()+getPasswdUser());
-        /*AuthenticationRule authr = new AuthenticationRule() {
-            @Override
-            private boolean login() {
-                return super.login(); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
-            }
-        }*/
-        
+
+    public boolean Login() {
+        //System.out.println(getNomeUser() + getPasswdUser());
+        AuthenticationRule auth = new Authentication();
+        boolean authSucess = auth.login(nomeUser, passwdUser);
+        return authSucess;
+
+
+
     }
-    
-    
+
 }

@@ -10,7 +10,8 @@ package dev.ivanrodrigues.medflow.rules;
  */
 public interface AuthenticationRule {
     
-    private boolean login(){
-        return true;
-    }
+    boolean login(String username, String password);
+    boolean creatUser(String username, String password);
+    boolean deleteUser(String username, String password);
+    
 }
