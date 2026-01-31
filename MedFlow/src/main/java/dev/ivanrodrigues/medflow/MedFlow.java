@@ -2,15 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  */
 
-package com.mycompany.medflow.desktop.java;
+package dev.ivanrodrigues.medflow;
 
-import UI.AppUI;
+import dev.ivanrodrigues.medflow.ui.AppUI;
 
 /**
  *
  * @author ivan8505
  */
-public class MedFlowDesktopJava {
+public class MedFlow {
 
     public static void main(String[] args) {
         //System.out.println("Hello World!");

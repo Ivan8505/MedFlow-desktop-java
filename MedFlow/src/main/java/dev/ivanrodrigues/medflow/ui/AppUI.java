@@ -2,12 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package UI;
-
+package dev.ivanrodrigues.medflow.ui;
 
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class AppUI extends javax.swing.JFrame {
     
@@ -30,26 +29,24 @@ public class AppUI extends javax.swing.JFrame {
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
-        login2 = new UI.Layouts.Login();
+        login1 = new dev.ivanrodrigues.medflow.ui.layouts.Login();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("MedFlow");
-        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setExtendedState(this.MAXIMIZED_BOTH);
+        setPreferredSize(new java.awt.Dimension(800, 600));
+        setSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
-
-        login2.setPreferredSize(new java.awt.Dimension(300, 400));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.ipadx = 107;
-        gridBagConstraints.ipady = 77;
+        gridBagConstraints.ipadx = 319;
+        gridBagConstraints.ipady = 83;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.NORTHWEST;
         gridBagConstraints.insets = new java.awt.Insets(150, 200, 150, 200);
-        getContentPane().add(login2, gridBagConstraints);
+        getContentPane().add(login1, gridBagConstraints);
 
-        setSize(new java.awt.Dimension(800, 637));
-        setLocationRelativeTo(null);
+        pack();
     }// </editor-fold>//GEN-END:initComponents
 
     /**
@@ -78,6 +75,6 @@ public class AppUI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private UI.Layouts.Login login2;
+    private dev.ivanrodrigues.medflow.ui.layouts.Login login1;
     // End of variables declaration//GEN-END:variables
 }
