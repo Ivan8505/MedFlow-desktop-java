@@ -8,6 +8,9 @@ package dev.ivanrodrigues.medflow.rules;
  *
  * @author ivan8505
  */
-public interface Authentication {
+public interface AuthenticationRule {
     
+    private boolean login(){
+        return true;
+    }
 }
