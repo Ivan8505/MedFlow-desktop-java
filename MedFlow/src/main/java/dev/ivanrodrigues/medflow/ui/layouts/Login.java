@@ -37,6 +37,9 @@ public class Login extends javax.swing.JPanel {
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
+        setAlignmentX(1.0F);
+        setAlignmentY(1.0F);
+
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Username");
 
@@ -140,7 +143,6 @@ public class Login extends javax.swing.JPanel {
                     app.setTitle("MedFlow - Principal");   // ou "Dashboard", "Sistema", etc.
 
                     // Torna o menu visível
-                    app.admin();
                 }
             }
         }

@@ -8,12 +8,12 @@ package dev.ivanrodrigues.medflow.ui.layouts;
  *
  * @author ivan
  */
-public class PageAdmin extends javax.swing.JPanel {
+public class Main extends javax.swing.JPanel {
 
     /**
-     * Creates new form Admin
+     * Creates new form Main
      */
-    public PageAdmin() {
+    public Main() {
         initComponents();
     }
 
