@@ -4,8 +4,9 @@
  */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
+import dev.ivanrodrigues.medflow.controller.AppUIController;
 import dev.ivanrodrigues.medflow.controller.AuthenticationController;
-import dev.ivanrodrigues.medflow.ui.AppUI;
+//import dev.ivanrodrigues.medflow.ui.AppUI;
 import javax.swing.JOptionPane;
 
 /**
@@ -14,11 +15,15 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JPanel {
 
+    
+    private AppUIController appc;
     /**
      * Creates new form Login
      */
-    public Login() {
+    public Login(AppUIController appc) {
+        this.appc = appc;
         initComponents();
+        
     }
 
     /**
@@ -87,6 +92,8 @@ public class Login extends javax.swing.JPanel {
                 .addComponent(jButton1)
                 .addContainerGap(89, Short.MAX_VALUE))
         );
+
+        getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
     private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
@@ -135,15 +142,10 @@ public class Login extends javax.swing.JPanel {
             if (login) {
                 JOptionPane.showMessageDialog(this, "Welcome");
                 this.setVisible(false);
-                java.awt.Window window = javax.swing.SwingUtilities.getWindowAncestor(this);
-
-                if (window instanceof AppUI app) {
-
-                    // Muda o título da janela
-                    app.setTitle("MedFlow - Principal");   // ou "Dashboard", "Sistema", etc.
-
-                    // Torna o menu visível
-                }
+                appc.showDashboard();
+                appc.setTitleAppUI("Med Flow - Dashboard");
+                appc.setUser("Admin");
+                
             }
         }
     }

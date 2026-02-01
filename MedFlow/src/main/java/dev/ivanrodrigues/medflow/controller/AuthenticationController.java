@@ -6,7 +6,7 @@
 package dev.ivanrodrigues.medflow.controller;
 
 import dev.ivanrodrigues.medflow.rules.Authentication;
-import dev.ivanrodrigues.medflow.rules.AuthenticationRule;
+import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
 
 /**
  *

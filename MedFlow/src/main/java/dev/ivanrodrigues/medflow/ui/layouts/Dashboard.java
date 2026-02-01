@@ -4,25 +4,23 @@
  */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
-import java.awt.CardLayout;
-import javax.swing.JPanel;
+import dev.ivanrodrigues.medflow.controller.AppUIController;
 
 /**
  *
  * @author ivan
  */
-public class Main extends javax.swing.JPanel {
-
-    private final CardLayout layout;
+public class Dashboard extends javax.swing.JPanel {
+    
+    private AppUIController appc;
 
     /**
-     * Creates new form Main
+     * Creates new form Dashboard
      */
-    public Main() {
+    public Dashboard(AppUIController appc) {
         initComponents();
-
-        layout = new CardLayout();
-        setLayout(layout);
+        
+        this.appc = appc;
     }
 
     /**
@@ -49,12 +47,4 @@ public class Main extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     // End of variables declaration//GEN-END:variables
-    public void register(String name, JPanel panel) {
-        add(panel, name);
-    }
-
-    public void show(String card) {
-        layout.show(this, card);
-    }
-
 }

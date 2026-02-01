@@ -4,12 +4,19 @@
  */
 package dev.ivanrodrigues.medflow.ui;
 
+import dev.ivanrodrigues.medflow.controller.AppUIController;
+import dev.ivanrodrigues.medflow.ui.layouts.Dashboard;
+import dev.ivanrodrigues.medflow.ui.layouts.Login;
+import dev.ivanrodrigues.medflow.ui.layouts.Main;
+
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class AppUI extends javax.swing.JFrame {
-    
+
+    private final Main main;
+    private AppUIController appc;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AppUI.class.getName());
 
     /**
@@ -17,6 +24,9 @@ public class AppUI extends javax.swing.JFrame {
      */
     public AppUI() {
         initComponents();
+        this.main = new Main();
+        this.appc = new AppUIController(main, this);
+        login();
     }
 
     /**
@@ -59,9 +69,48 @@ public class AppUI extends javax.swing.JFrame {
         jMenuItem24 = new javax.swing.JMenuItem();
         jMenuItem25 = new javax.swing.JMenuItem();
         jMenu3 = new javax.swing.JMenu();
+        jMenuItem26 = new javax.swing.JMenuItem();
+        jMenuItem27 = new javax.swing.JMenuItem();
+        jMenuItem28 = new javax.swing.JMenuItem();
+        jMenuItem29 = new javax.swing.JMenuItem();
+        jMenuItem30 = new javax.swing.JMenuItem();
+        jMenuItem31 = new javax.swing.JMenuItem();
+        jMenuItem32 = new javax.swing.JMenuItem();
+        jMenuItem33 = new javax.swing.JMenuItem();
+        jMenuItem34 = new javax.swing.JMenuItem();
+        jMenuItem35 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem36 = new javax.swing.JMenuItem();
+        jMenuItem37 = new javax.swing.JMenuItem();
+        jMenuItem38 = new javax.swing.JMenuItem();
+        jMenuItem39 = new javax.swing.JMenuItem();
+        jMenuItem41 = new javax.swing.JMenuItem();
+        jMenuItem42 = new javax.swing.JMenuItem();
+        jMenuItem43 = new javax.swing.JMenuItem();
+        jMenuItem44 = new javax.swing.JMenuItem();
+        jMenuItem45 = new javax.swing.JMenuItem();
         jMenu5 = new javax.swing.JMenu();
+        jMenuItem46 = new javax.swing.JMenuItem();
+        jMenuItem47 = new javax.swing.JMenuItem();
+        jMenuItem48 = new javax.swing.JMenuItem();
+        jMenuItem49 = new javax.swing.JMenuItem();
+        jMenuItem50 = new javax.swing.JMenuItem();
+        jMenuItem51 = new javax.swing.JMenuItem();
+        jMenuItem52 = new javax.swing.JMenuItem();
+        jMenuItem53 = new javax.swing.JMenuItem();
+        jMenuItem54 = new javax.swing.JMenuItem();
+        jMenuItem55 = new javax.swing.JMenuItem();
         jMenu6 = new javax.swing.JMenu();
+        jMenuItem56 = new javax.swing.JMenuItem();
+        jMenuItem57 = new javax.swing.JMenuItem();
+        jMenuItem58 = new javax.swing.JMenuItem();
+        jMenuItem59 = new javax.swing.JMenuItem();
+        jMenuItem61 = new javax.swing.JMenuItem();
+        jMenuItem62 = new javax.swing.JMenuItem();
+        jMenuItem63 = new javax.swing.JMenuItem();
+        jMenuItem64 = new javax.swing.JMenuItem();
+        jMenuItem65 = new javax.swing.JMenuItem();
+        jMenuItem66 = new javax.swing.JMenuItem();
         jMenu7 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -160,32 +209,142 @@ public class AppUI extends javax.swing.JFrame {
         jMenuBar1.add(jMenu2);
 
         jMenu3.setText("Inventory");
+
+        jMenuItem26.setText("List Products");
+        jMenu3.add(jMenuItem26);
+
+        jMenuItem27.setText("Add Product");
+        jMenu3.add(jMenuItem27);
+
+        jMenuItem28.setText("Remove Product");
+        jMenu3.add(jMenuItem28);
+
+        jMenuItem29.setText("Product Categories");
+        jMenu3.add(jMenuItem29);
+
+        jMenuItem30.setText("Suppliers");
+        jMenu3.add(jMenuItem30);
+
+        jMenuItem31.setText("Batches / Expiration");
+        jMenu3.add(jMenuItem31);
+
+        jMenuItem32.setText("Low Stock Alerts");
+        jMenu3.add(jMenuItem32);
+
+        jMenuItem33.setText("Near - Expiration Alerts");
+        jMenu3.add(jMenuItem33);
+
+        jMenuItem34.setText("Stock Movements");
+        jMenu3.add(jMenuItem34);
+
+        jMenuItem35.setText("Inventory Reports");
+        jMenu3.add(jMenuItem35);
+
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Purchases");
+
+        jMenuItem36.setText("Register Purchase");
+        jMenu4.add(jMenuItem36);
+
+        jMenuItem37.setText("Create Purchase Order");
+        jMenu4.add(jMenuItem37);
+
+        jMenuItem38.setText("Edit Purchase Order");
+        jMenu4.add(jMenuItem38);
+
+        jMenuItem39.setText("Cancel Purchase Order");
+        jMenu4.add(jMenuItem39);
+
+        jMenuItem41.setText("Approve Purchase");
+        jMenu4.add(jMenuItem41);
+
+        jMenuItem42.setText("Suppliers");
+        jMenu4.add(jMenuItem42);
+
+        jMenuItem43.setText("Acconts Payable");
+        jMenu4.add(jMenuItem43);
+
+        jMenuItem44.setText("Stock Entry");
+        jMenu4.add(jMenuItem44);
+
+        jMenuItem45.setText("Puchase Reports");
+        jMenu4.add(jMenuItem45);
+
         jMenuBar1.add(jMenu4);
 
         jMenu5.setText("Sales");
+
+        jMenuItem46.setText("Register Sale");
+        jMenu5.add(jMenuItem46);
+
+        jMenuItem47.setText("Cancel Sale");
+        jMenu5.add(jMenuItem47);
+
+        jMenuItem48.setText("Refund Sale");
+        jMenu5.add(jMenuItem48);
+
+        jMenuItem49.setText("Cash Register");
+        jMenu5.add(jMenuItem49);
+
+        jMenuItem50.setText("Cash Closing");
+        jMenu5.add(jMenuItem50);
+
+        jMenuItem51.setText("Payment Methods");
+        jMenu5.add(jMenuItem51);
+
+        jMenuItem52.setText("Apply Discounts");
+        jMenu5.add(jMenuItem52);
+
+        jMenuItem53.setText("Sales History");
+        jMenu5.add(jMenuItem53);
+
+        jMenuItem54.setText("Sales by Employee");
+        jMenu5.add(jMenuItem54);
+
+        jMenuItem55.setText("Sales Reports");
+        jMenu5.add(jMenuItem55);
+
         jMenuBar1.add(jMenu5);
 
         jMenu6.setText("Customers");
+
+        jMenuItem56.setText("Register Customer");
+        jMenu6.add(jMenuItem56);
+
+        jMenuItem57.setText("Edit Customer");
+        jMenu6.add(jMenuItem57);
+
+        jMenuItem58.setText("List Customers");
+        jMenu6.add(jMenuItem58);
+
+        jMenuItem59.setText("Remove Customer");
+        jMenu6.add(jMenuItem59);
+
+        jMenuItem61.setText("Purchase History");
+        jMenu6.add(jMenuItem61);
+
+        jMenuItem62.setText("Loyalty Program");
+        jMenu6.add(jMenuItem62);
+
+        jMenuItem63.setText("Credits / Debits");
+        jMenu6.add(jMenuItem63);
+
+        jMenuItem64.setText("Health Plans / Agreements");
+        jMenu6.add(jMenuItem64);
+
+        jMenuItem65.setText("Block / Unblock Customer");
+        jMenu6.add(jMenuItem65);
+
+        jMenuItem66.setText("Customer Reports");
+        jMenu6.add(jMenuItem66);
+
         jMenuBar1.add(jMenu6);
 
         jMenu7.setText("Reports");
         jMenuBar1.add(jMenu7);
 
         setJMenuBar(jMenuBar1);
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 582, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 275, Short.MAX_VALUE)
-        );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -215,6 +374,9 @@ public class AppUI extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(() -> new AppUI().setVisible(true));
     }
 
+    /*
+    //<editor-fold defaultstate="collapsed" desc=" Variaveis criadas automaticamente com Netbeans ">
+     */
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu10;
@@ -244,13 +406,67 @@ public class AppUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
     private javax.swing.JMenuItem jMenuItem25;
+    private javax.swing.JMenuItem jMenuItem26;
+    private javax.swing.JMenuItem jMenuItem27;
+    private javax.swing.JMenuItem jMenuItem28;
+    private javax.swing.JMenuItem jMenuItem29;
     private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem30;
+    private javax.swing.JMenuItem jMenuItem31;
+    private javax.swing.JMenuItem jMenuItem32;
+    private javax.swing.JMenuItem jMenuItem33;
+    private javax.swing.JMenuItem jMenuItem34;
+    private javax.swing.JMenuItem jMenuItem35;
+    private javax.swing.JMenuItem jMenuItem36;
+    private javax.swing.JMenuItem jMenuItem37;
+    private javax.swing.JMenuItem jMenuItem38;
+    private javax.swing.JMenuItem jMenuItem39;
     private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem41;
+    private javax.swing.JMenuItem jMenuItem42;
+    private javax.swing.JMenuItem jMenuItem43;
+    private javax.swing.JMenuItem jMenuItem44;
+    private javax.swing.JMenuItem jMenuItem45;
+    private javax.swing.JMenuItem jMenuItem46;
+    private javax.swing.JMenuItem jMenuItem47;
+    private javax.swing.JMenuItem jMenuItem48;
+    private javax.swing.JMenuItem jMenuItem49;
     private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItem50;
+    private javax.swing.JMenuItem jMenuItem51;
+    private javax.swing.JMenuItem jMenuItem52;
+    private javax.swing.JMenuItem jMenuItem53;
+    private javax.swing.JMenuItem jMenuItem54;
+    private javax.swing.JMenuItem jMenuItem55;
+    private javax.swing.JMenuItem jMenuItem56;
+    private javax.swing.JMenuItem jMenuItem57;
+    private javax.swing.JMenuItem jMenuItem58;
+    private javax.swing.JMenuItem jMenuItem59;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem61;
+    private javax.swing.JMenuItem jMenuItem62;
+    private javax.swing.JMenuItem jMenuItem63;
+    private javax.swing.JMenuItem jMenuItem64;
+    private javax.swing.JMenuItem jMenuItem65;
+    private javax.swing.JMenuItem jMenuItem66;
     private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     // End of variables declaration//GEN-END:variables
-    //Code criado por MIM ivan8505
+    //</editor-fold>
+
+//Code criado por MIM ivan8505
+    private void login() {
+        jMenuBar1.setVisible(false);
+        //setContentPane(main1);
+        main.register("LOGIN", new Login(appc));
+        main.register("DASHBOARD", new Dashboard(appc));
+
+        add(main);
+
+        appc.showLogin();
+
+        setTitle("Med Flow - Login");
+    }
+
 }

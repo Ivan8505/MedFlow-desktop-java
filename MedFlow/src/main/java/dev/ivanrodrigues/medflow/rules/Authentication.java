@@ -5,6 +5,8 @@
 
 package dev.ivanrodrigues.medflow.rules;
 
+import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
+
 /**
  *
  * @author ivan8505
