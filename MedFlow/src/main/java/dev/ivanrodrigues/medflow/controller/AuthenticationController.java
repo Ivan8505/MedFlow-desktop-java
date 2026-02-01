@@ -16,7 +16,7 @@ import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
 public class AuthenticationController {
 
     private String nomeUser;
-    private String passwdUser;
+    private char[] passwdUser;
     
     public String getNomeUser() {
         return nomeUser;
@@ -26,15 +26,15 @@ public class AuthenticationController {
         this.nomeUser = nomeUser;
     }
 
-    public String getPasswdUser() {
+    public char[] getPasswdUser() {
         return passwdUser;
     }
 
-    public void setPasswdUser(String passwdUser) {
+    public void setPasswdUser(char[] passwdUser) {
         this.passwdUser = passwdUser;
     }
 
-    public AuthenticationController(String nomeUser, String passwdUser) {
+    public AuthenticationController(String nomeUser, char[] passwdUser) {
         this.nomeUser = nomeUser;
         this.passwdUser = passwdUser;
     }

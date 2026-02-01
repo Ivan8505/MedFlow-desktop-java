@@ -41,6 +41,7 @@ public class AppUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu8 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
@@ -120,10 +121,16 @@ public class AppUI extends javax.swing.JFrame {
         jMenu1.setText("User");
 
         jMenuItem1.setText("Log out");
+        jMenuItem1.addActionListener(this::jMenuItem1ActionPerformed);
         jMenu1.add(jMenuItem1);
 
-        jMenuItem2.setText("Switch User");
-        jMenu1.add(jMenuItem2);
+        jMenu8.setText("Switch User");
+
+        jMenuItem2.setText("Other user");
+        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
+        jMenu8.add(jMenuItem2);
+
+        jMenu1.add(jMenu8);
 
         jMenu9.setText("Profile");
 
@@ -349,6 +356,16 @@ public class AppUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        logout();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        login();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -386,6 +403,7 @@ public class AppUI extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu5;
     private javax.swing.JMenu jMenu6;
     private javax.swing.JMenu jMenu7;
+    private javax.swing.JMenu jMenu8;
     private javax.swing.JMenu jMenu9;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -455,10 +473,9 @@ public class AppUI extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
     //</editor-fold>
 
-//Code criado por MIM ivan8505
+    //Code criado por MIM ivan8505
     private void login() {
         jMenuBar1.setVisible(false);
-        //setContentPane(main1);
         main.register("LOGIN", new Login(appc));
         main.register("DASHBOARD", new Dashboard(appc));
 
@@ -467,6 +484,20 @@ public class AppUI extends javax.swing.JFrame {
         appc.showLogin();
 
         setTitle("Med Flow - Login");
+    }
+
+    private void logout() {
+        jMenuBar1.setVisible(false);
+        appc.showLogin();
+    }
+
+    public void accessAdmin() {
+        jMenuBar1.setVisible(true);
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    public void accessUser() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

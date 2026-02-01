@@ -6,7 +6,6 @@ package dev.ivanrodrigues.medflow.ui.layouts;
 
 import dev.ivanrodrigues.medflow.controller.AppUIController;
 import dev.ivanrodrigues.medflow.controller.AuthenticationController;
-//import dev.ivanrodrigues.medflow.ui.AppUI;
 import javax.swing.JOptionPane;
 
 /**
@@ -15,15 +14,17 @@ import javax.swing.JOptionPane;
  */
 public class Login extends javax.swing.JPanel {
 
-    
-    private AppUIController appc;
+    private final AppUIController appc;
+
     /**
      * Creates new form Login
+     *
+     * @param appc
      */
     public Login(AppUIController appc) {
         this.appc = appc;
         initComponents();
-        
+
     }
 
     /**
@@ -128,13 +129,9 @@ public class Login extends javax.swing.JPanel {
     //Code Criado Por mim ivan8505
     private void Login() {
         String user = jTextField1.getText();
-        char[] senhaChar = jPasswordField1.getPassword();
-        String senha = new String(senhaChar);
-        if ("".equals(senha) || "".equals(user)) {
-            JOptionPane.showMessageDialog(this, "Fild user and password not null");
-            jTextField1.setText("");
-            jPasswordField1.setText("");
-            jTextField1.requestFocus();
+        char[] senha = jPasswordField1.getPassword();
+        if (senha.length == 0 || "".equals(user)) {
+            JOptionPane.showMessageDialog(this, "Username and password are required");
         } else {
             AuthenticationController authc;
             authc = new AuthenticationController(user, senha);
@@ -144,10 +141,14 @@ public class Login extends javax.swing.JPanel {
                 this.setVisible(false);
                 appc.showDashboard();
                 appc.setTitleAppUI("Med Flow - Dashboard");
-                appc.setUser("Admin");
-                
+                appc.setAccessLevel((byte) AppUIController.ACCESS_ADMIN_ROLE);
+            } else {
+                JOptionPane.showMessageDialog(this, "Incorrect username or password");
             }
         }
+        jTextField1.setText("");
+        jPasswordField1.setText("");
+        jTextField1.requestFocus();
     }
 
 }

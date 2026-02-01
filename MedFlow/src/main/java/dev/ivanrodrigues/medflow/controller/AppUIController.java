@@ -15,6 +15,8 @@ public class AppUIController {
 
     private final Main main;
     private final AppUI app;
+    public static final byte ACCESS_ADMIN_ROLE = 0;
+    public static final byte ACCESS_USER_ROLE = 1;
 
     public AppUIController(Main main, AppUI app) {
         this.main = main;
@@ -37,9 +39,15 @@ public class AppUIController {
         app.setTitle(title);
     }
 
-    public void setUser(String admin) {
+    public void setAccessLevel(byte access) {
 
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+        if (access == ACCESS_ADMIN_ROLE) {
+            app.accessAdmin();
+        } else if (access == ACCESS_USER_ROLE){
+            app.accessUser();
+        }
+
+        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
 }

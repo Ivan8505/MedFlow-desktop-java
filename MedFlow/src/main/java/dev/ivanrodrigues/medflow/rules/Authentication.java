@@ -6,6 +6,7 @@
 package dev.ivanrodrigues.medflow.rules;
 
 import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
+import java.util.Arrays;
 
 /**
  *
@@ -15,25 +16,25 @@ import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
 public class Authentication implements AuthenticationRule {
     
     private final String validUser = "admin";
-    private final String validPassword = "1234";
+    private final char[] validPassword = {'1', '2', '3', '4'};
     private boolean username;
     private boolean password;
 
     @Override
-    public boolean login(String username, String password) {
+    public boolean login(String username, char[] password) {
         this.username = validUser.equals(username);
-        this.password = validPassword.equals(password);    
+        this.password = Arrays.equals(password, validPassword);    
         return this.username && this.password;
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean creatUser(String username, String password) {
+    public boolean creatUser(String username, char[] password) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     @Override
-    public boolean deleteUser(String username, String password) {
+    public boolean deleteUser(String username, char[] password) {
         throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
