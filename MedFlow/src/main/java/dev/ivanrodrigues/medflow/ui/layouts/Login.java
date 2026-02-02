@@ -43,18 +43,14 @@ public class Login extends javax.swing.JPanel {
         jPasswordField1 = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
 
-        setAlignmentX(1.0F);
-        setAlignmentY(1.0F);
+        setAlignmentX(0.0F);
+        setAlignmentY(0.0F);
+        setMaximumSize(new java.awt.Dimension(400, 300));
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Username");
 
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyPressed(java.awt.event.KeyEvent evt) {
-                jTextField1KeyPressed(evt);
-            }
-        });
 
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Password");
@@ -97,11 +93,6 @@ public class Login extends javax.swing.JPanel {
         getAccessibleContext().setAccessibleDescription("");
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyPressed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_jTextField1KeyPressed
-
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
         Login();
@@ -138,10 +129,12 @@ public class Login extends javax.swing.JPanel {
             boolean login = authc.Login();
             if (login) {
                 JOptionPane.showMessageDialog(this, "Welcome");
-                this.setVisible(false);
-                appc.showDashboard();
+                appc.removePanel(this);
+                appc.registerPanels("DASHBOARD", new Dashboard(appc));
+                appc.showPanel("Dashboard");
                 appc.setTitleAppUI("Med Flow - Dashboard");
                 appc.setAccessLevel((byte) AppUIController.ACCESS_ADMIN_ROLE);
+                appc.setSessions("admin");
             } else {
                 JOptionPane.showMessageDialog(this, "Incorrect username or password");
             }

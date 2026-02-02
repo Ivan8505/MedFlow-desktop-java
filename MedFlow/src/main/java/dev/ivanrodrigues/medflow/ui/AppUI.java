@@ -5,9 +5,12 @@
 package dev.ivanrodrigues.medflow.ui;
 
 import dev.ivanrodrigues.medflow.controller.AppUIController;
-import dev.ivanrodrigues.medflow.ui.layouts.Dashboard;
 import dev.ivanrodrigues.medflow.ui.layouts.Login;
 import dev.ivanrodrigues.medflow.ui.layouts.Main;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JMenuItem;
 
 /**
  *
@@ -135,6 +138,7 @@ public class AppUI extends javax.swing.JFrame {
         jMenu9.setText("Profile");
 
         jMenuItem3.setText("Change Password");
+        jMenuItem3.addActionListener(this::jMenuItem3ActionPerformed);
         jMenu9.add(jMenuItem3);
 
         jMenuItem5.setText("Edit User");
@@ -366,6 +370,11 @@ public class AppUI extends javax.swing.JFrame {
         login();
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        editPassword();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -476,19 +485,22 @@ public class AppUI extends javax.swing.JFrame {
     //Code criado por MIM ivan8505
     private void login() {
         jMenuBar1.setVisible(false);
-        main.register("LOGIN", new Login(appc));
-        main.register("DASHBOARD", new Dashboard(appc));
-
+        appc.registerPanels("Login", new Login(appc));
         add(main);
 
-        appc.showLogin();
+        appc.showPanel("Login");
 
         setTitle("Med Flow - Login");
     }
 
     private void logout() {
         jMenuBar1.setVisible(false);
-        appc.showLogin();
+        appc.registerPanels("Login", new Login(appc));
+        appc.showPanel("Login");
+    }
+
+    private void editPassword() {
+        appc.editPassword();
     }
 
     public void accessAdmin() {
@@ -496,8 +508,27 @@ public class AppUI extends javax.swing.JFrame {
         //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
-    public void accessUser() {
-        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    public void levelAccess(String user) {
+        if ("other user".equals(user)) {
+            appc.registerPanels("Login", new Login(appc));
+            appc.showPanel("Login");
+        } else {
+            
+        }
+    }
+
+    public void setSessionMenuBar(ArrayList<String> usernames) {
+        jMenu8.removeAll(); // opcional, limpa itens antigos
+
+        for (String name : usernames) {
+            JMenuItem item = new JMenuItem(name);
+            jMenu8.add(item);
+            item.addActionListener((ActionEvent e) -> {
+                levelAccess(name);
+            });
+        }
+        jMenu8.revalidate(); // atualiza o menu
+        jMenu8.repaint();
     }
 
 }
