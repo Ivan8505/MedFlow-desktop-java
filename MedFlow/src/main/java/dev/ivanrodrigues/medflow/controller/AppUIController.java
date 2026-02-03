@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dev.ivanrodrigues.medflow.controller;
 
 import dev.ivanrodrigues.medflow.ui.AppUI;
@@ -35,8 +31,8 @@ public class AppUIController {
     public void showPanel(String panel) {
         main.show(panel);
     }
-    
-    public void removePanel(JPanel panel){
+
+    public void removePanel(JPanel panel) {
         main.remove(panel);
     }
 
@@ -51,8 +47,6 @@ public class AppUIController {
         } else if (access == ACCESS_USER_ROLE) {
             //app.accessUser();
         }
-
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 
     public void editPassword() {
@@ -61,9 +55,8 @@ public class AppUIController {
         registerPanels("Edit Profile", new EditProfile(this));
         showPanel("Edit Profile");
     }
-    
-    
-    public void setSessions(String username){
+
+    public void setSessions(String username) {
         sessions.add(username);
         app.setSessionMenuBar(sessions);
     }

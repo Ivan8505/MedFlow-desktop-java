@@ -3,17 +3,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 
-package dev.ivanrodrigues.medflow.controller;
-
-import dev.ivanrodrigues.medflow.rules.Authentication;
-import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
+package dev.ivanrodrigues.medflow.objects;
 
 /**
  *
  * @author ivan8505
  */
 
-public class AuthenticationController {
+public class LoginDTO {
 
     private String nomeUser;
     private char[] passwdUser;
@@ -34,19 +31,11 @@ public class AuthenticationController {
         this.passwdUser = passwdUser;
     }
 
-    public AuthenticationController(String nomeUser, char[] passwdUser) {
+    public LoginDTO(String nomeUser, char[] passwdUser) {
         this.nomeUser = nomeUser;
         this.passwdUser = passwdUser;
     }
 
-    public boolean Login() {
-        //System.out.println(getNomeUser() + getPasswdUser());
-        AuthenticationRule auth = new Authentication();
-        boolean authSucess = auth.login(nomeUser, passwdUser);
-        return authSucess;
 
-
-
-    }
 
 }

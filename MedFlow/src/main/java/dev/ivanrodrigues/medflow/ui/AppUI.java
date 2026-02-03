@@ -8,7 +8,6 @@ import dev.ivanrodrigues.medflow.controller.AppUIController;
 import dev.ivanrodrigues.medflow.ui.layouts.Login;
 import dev.ivanrodrigues.medflow.ui.layouts.Main;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JMenuItem;
 
@@ -19,7 +18,7 @@ import javax.swing.JMenuItem;
 public class AppUI extends javax.swing.JFrame {
 
     private final Main main;
-    private AppUIController appc;
+    private final AppUIController appc;
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AppUI.class.getName());
 
     /**

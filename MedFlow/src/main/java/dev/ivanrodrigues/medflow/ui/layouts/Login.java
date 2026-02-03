@@ -1,12 +1,7 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
 import dev.ivanrodrigues.medflow.controller.AppUIController;
-import dev.ivanrodrigues.medflow.controller.AuthenticationController;
-import javax.swing.JOptionPane;
+import dev.ivanrodrigues.medflow.controller.LoginUIController;
 
 /**
  *
@@ -16,11 +11,6 @@ public class Login extends javax.swing.JPanel {
 
     private final AppUIController appc;
 
-    /**
-     * Creates new form Login
-     *
-     * @param appc
-     */
     public Login(AppUIController appc) {
         this.appc = appc;
         initComponents();
@@ -121,27 +111,7 @@ public class Login extends javax.swing.JPanel {
     private void Login() {
         String user = jTextField1.getText();
         char[] senha = jPasswordField1.getPassword();
-        if (senha.length == 0 || "".equals(user)) {
-            JOptionPane.showMessageDialog(this, "Username and password are required");
-        } else {
-            AuthenticationController authc;
-            authc = new AuthenticationController(user, senha);
-            boolean login = authc.Login();
-            if (login) {
-                JOptionPane.showMessageDialog(this, "Welcome");
-                appc.removePanel(this);
-                appc.registerPanels("DASHBOARD", new Dashboard(appc));
-                appc.showPanel("Dashboard");
-                appc.setTitleAppUI("Med Flow - Dashboard");
-                appc.setAccessLevel((byte) AppUIController.ACCESS_ADMIN_ROLE);
-                appc.setSessions("admin");
-            } else {
-                JOptionPane.showMessageDialog(this, "Incorrect username or password");
-            }
-        }
-        jTextField1.setText("");
-        jPasswordField1.setText("");
-        jTextField1.requestFocus();
+        LoginUIController logUIC = new LoginUIController(appc);
+        logUIC.Login(user, senha, this);
     }
-
 }
