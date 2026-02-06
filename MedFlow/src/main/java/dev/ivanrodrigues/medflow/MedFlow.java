@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- */
-
 package dev.ivanrodrigues.medflow;
 
 import dev.ivanrodrigues.medflow.ui.AppUI;
@@ -16,5 +12,6 @@ public class MedFlow {
         //System.out.println("Hello World!");
         AppUI app = new AppUI();
         app.setVisible(true);
+
     }
 }

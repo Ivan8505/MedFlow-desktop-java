@@ -1,26 +1,22 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
-import dev.ivanrodrigues.medflow.controller.AppUIController;
+import dev.ivanrodrigues.medflow.rules.services.NavigationService;
 
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class Dashboard extends javax.swing.JPanel {
     
-    private AppUIController appc;
+    private NavigationService navC;
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard(AppUIController appc) {
+    public Dashboard(NavigationService navC) {
         initComponents();
         
-        this.appc = appc;
+        this.navC = navC;
     }
 
     /**

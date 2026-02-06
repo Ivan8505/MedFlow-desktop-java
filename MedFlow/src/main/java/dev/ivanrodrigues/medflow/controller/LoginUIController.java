@@ -1,10 +1,10 @@
 package dev.ivanrodrigues.medflow.controller;
 
+import dev.ivanrodrigues.medflow.rules.services.NavigationService;
 import dev.ivanrodrigues.medflow.objects.LoginDTO;
+import dev.ivanrodrigues.medflow.objects.UsersDTO;
 import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
 import dev.ivanrodrigues.medflow.rules.services.Authentication;
-import dev.ivanrodrigues.medflow.ui.layouts.Dashboard;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 /**
@@ -13,32 +13,32 @@ import javax.swing.JPanel;
  */
 public class LoginUIController {
 
-    private final AppUIController appc;
+    private final NavigationService navC;
+    private UsersDTO userDTO;
 
-    public LoginUIController(AppUIController appc) {
-        this.appc = appc;
+    public LoginUIController(NavigationService navC) {
+        this.navC = navC;
     }
 
-    public void Login(String username, char[] passwdUser, JPanel loginUi) {
+    public String login(String username, char[] passwdUser, JPanel loginUi) {
 
         if (passwdUser.length == 0 || "".equals(username)) {
-            JOptionPane.showMessageDialog(loginUi, "Username and password are required");
+            return "Username and password are required";
         } else {
             LoginDTO loginDto = new LoginDTO(username, passwdUser);
             AuthenticationRule authr = new Authentication();
-            boolean authSucess = authr.login(loginDto);
-            if (authSucess) {
-                JOptionPane.showMessageDialog(loginUi, "Welcome");
-
-                appc.removePanel(loginUi);
-                appc.registerPanels("DASHBOARD", new Dashboard(appc));
-                appc.showPanel("Dashboard");
-                appc.setTitleAppUI("Med Flow - Dashboard");
-                appc.setAccessLevel((byte) AppUIController.ACCESS_ADMIN_ROLE);
-                appc.setSessions("admin");
+            userDTO = authr.login(loginDto);
+            if (userDTO != null) {
+                registerSession(userDTO);
+                return "Welcome";
             } else {
-                JOptionPane.showMessageDialog(loginUi, "Incorrect username or password");
+                return "Incorrect username or password";
             }
         }
+    }
+
+    private void registerSession(UsersDTO usersDTO) {
+        navC.session(usersDTO);
+        
     }
 }

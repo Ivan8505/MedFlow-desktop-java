@@ -1,7 +1,8 @@
 package dev.ivanrodrigues.medflow.ui.layouts;
 
-import dev.ivanrodrigues.medflow.controller.AppUIController;
 import dev.ivanrodrigues.medflow.controller.LoginUIController;
+import dev.ivanrodrigues.medflow.rules.services.NavigationService;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -9,10 +10,10 @@ import dev.ivanrodrigues.medflow.controller.LoginUIController;
  */
 public class Login extends javax.swing.JPanel {
 
-    private final AppUIController appc;
+    private final LoginUIController logC;
 
-    public Login(AppUIController appc) {
-        this.appc = appc;
+    public Login(NavigationService navC, LoginUIController logUIC) {
+        this.logC = logUIC;
         initComponents();
 
     }
@@ -85,12 +86,12 @@ public class Login extends javax.swing.JPanel {
 
     private void jPasswordField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPasswordField1ActionPerformed
         // TODO add your handling code here:
-        Login();
+        login();
     }//GEN-LAST:event_jPasswordField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        Login();
+        login();
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -108,10 +109,13 @@ public class Login extends javax.swing.JPanel {
     // End of variables declaration//GEN-END:variables
 
     //Code Criado Por mim ivan8505
-    private void Login() {
+    private void login() {
         String user = jTextField1.getText();
         char[] senha = jPasswordField1.getPassword();
-        LoginUIController logUIC = new LoginUIController(appc);
-        logUIC.Login(user, senha, this);
+        String message = logC.login(user, senha, this);
+        jPasswordField1.setText("");
+        jTextField1.setText("");
+        jTextField1.requestFocus();
+        JOptionPane.showMessageDialog(this, message);
     }
 }

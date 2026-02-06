@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
 import java.awt.CardLayout;
@@ -9,7 +5,7 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class Main extends javax.swing.JPanel {
 

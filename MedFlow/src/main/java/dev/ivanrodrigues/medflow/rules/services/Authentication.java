@@ -1,11 +1,9 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package dev.ivanrodrigues.medflow.rules.services;
 
 import dev.ivanrodrigues.medflow.objects.LoginDTO;
+import dev.ivanrodrigues.medflow.objects.UsersDTO;
 import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -18,11 +16,21 @@ public class Authentication implements AuthenticationRule {
     private final char[] validPassword = {'1', '2', '3', '4'};
 
     @Override
-    public boolean login(LoginDTO loginDTO) {
+    public UsersDTO login(LoginDTO loginDTO) {
 
-        boolean isValidUser = loginDTO.getNomeUser().equals(validUser);
+        boolean isValidUsername = loginDTO.getUsername().equals(validUser);
         boolean isValidPassword = Arrays.equals(loginDTO.getPasswdUser(), validPassword);
-        return isValidPassword && isValidUser;
+        boolean isValiduser = isValidPassword && isValidUsername;
+
+        if (isValiduser) {
+            UsersDTO userDTO = new UsersDTO();
+            userDTO.setUsername(loginDTO.getUsername());
+            userDTO.setFullName("Administrator");
+            userDTO.setAccess(new ArrayList<>(Arrays.asList("ADMINISTRATOR")));
+            return userDTO;
+        }
+
+        return null;
     }
 
 }

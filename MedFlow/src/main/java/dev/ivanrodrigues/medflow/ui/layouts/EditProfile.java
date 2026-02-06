@@ -1,14 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package dev.ivanrodrigues.medflow.ui.layouts;
 
 import dev.ivanrodrigues.medflow.controller.AppUIController;
 
 /**
  *
- * @author ivan
+ * @author ivan8505
  */
 public class EditProfile extends javax.swing.JPanel {
     

@@ -1,10 +1,10 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package dev.ivanrodrigues.medflow.ui;
 
+import dev.ivanrodrigues.medflow.SessionsUsers;
 import dev.ivanrodrigues.medflow.controller.AppUIController;
+import dev.ivanrodrigues.medflow.controller.LoginUIController;
+import dev.ivanrodrigues.medflow.rules.services.NavigationService;
+import dev.ivanrodrigues.medflow.objects.UsersDTO;
 import dev.ivanrodrigues.medflow.ui.layouts.Login;
 import dev.ivanrodrigues.medflow.ui.layouts.Main;
 import java.awt.event.ActionEvent;
@@ -18,8 +18,10 @@ import javax.swing.JMenuItem;
 public class AppUI extends javax.swing.JFrame {
 
     private final Main main;
-    private final AppUIController appc;
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AppUI.class.getName());
+    private final NavigationService navC;
+    private final LoginUIController logUIC;
+    private final SessionsUsers sessions;
+    private final AppUIController appC;
 
     /**
      * Creates new form App
@@ -27,7 +29,11 @@ public class AppUI extends javax.swing.JFrame {
     public AppUI() {
         initComponents();
         this.main = new Main();
-        this.appc = new AppUIController(main, this);
+        this.sessions = new SessionsUsers();
+        this.navC = new NavigationService(main, sessions);
+        this.logUIC = new LoginUIController(navC);
+        this.appC = new AppUIController();
+        navC.registerPanels("Login", new Login(navC, logUIC));
         login();
     }
 
@@ -371,7 +377,7 @@ public class AppUI extends javax.swing.JFrame {
 
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
-        editPassword();
+        //editPassword();
     }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
@@ -391,7 +397,6 @@ public class AppUI extends javax.swing.JFrame {
                 }
             }
         } catch (ReflectiveOperationException | javax.swing.UnsupportedLookAndFeelException ex) {
-            logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
@@ -484,50 +489,49 @@ public class AppUI extends javax.swing.JFrame {
     //Code criado por MIM ivan8505
     private void login() {
         jMenuBar1.setVisible(false);
-        appc.registerPanels("Login", new Login(appc));
         add(main);
-
-        appc.showPanel("Login");
-
+        navC.showPanel("Login");
         setTitle("Med Flow - Login");
     }
 
     private void logout() {
         jMenuBar1.setVisible(false);
-        appc.registerPanels("Login", new Login(appc));
-        appc.showPanel("Login");
+        navC.showPanel("Login");
     }
 
-    private void editPassword() {
-        appc.editPassword();
-    }
-
-    public void accessAdmin() {
-        jMenuBar1.setVisible(true);
-        //throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
-    }
-
-    public void levelAccess(String user) {
-        if ("other user".equals(user)) {
-            appc.registerPanels("Login", new Login(appc));
-            appc.showPanel("Login");
+    private void levelAccess(UsersDTO user) {
+        if ("other user".equals(user.getUsername())) {
+            navC.showPanel("Login");
         } else {
-            
+
         }
     }
 
-    public void setSessionMenuBar(ArrayList<String> usernames) {
-        jMenu8.removeAll(); // opcional, limpa itens antigos
+    public void setSessionMenuBar(ArrayList<UsersDTO> users) {
+        appC.setSessionsMenuBar();
+        
+        
+        
+        jMenu8.removeAll();
 
-        for (String name : usernames) {
-            JMenuItem item = new JMenuItem(name);
+        for (UsersDTO user : users) {
+            JMenuItem item = new JMenuItem(user.getUsername());
             jMenu8.add(item);
             item.addActionListener((ActionEvent e) -> {
-                levelAccess(name);
+                levelAccess(user);
             });
         }
-        jMenu8.revalidate(); // atualiza o menu
+        jMenu8.revalidate();
         jMenu8.repaint();
+    }
+
+    public void addMenuSession(String item) {
+        jMenu8.add(item);
+
+    }
+
+    public void setMenuBarVisible(boolean visible) {
+        jMenuBar1.setVisible(visible);
     }
 
 }

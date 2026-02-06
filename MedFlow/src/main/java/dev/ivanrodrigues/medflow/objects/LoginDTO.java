@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
-
 package dev.ivanrodrigues.medflow.objects;
 
 /**
@@ -15,11 +10,11 @@ public class LoginDTO {
     private String nomeUser;
     private char[] passwdUser;
     
-    public String getNomeUser() {
+    public String getUsername() {
         return nomeUser;
     }
 
-    public void setNomeUser(String nomeUser) {
+    public void setUsername(String nomeUser) {
         this.nomeUser = nomeUser;
     }
 
