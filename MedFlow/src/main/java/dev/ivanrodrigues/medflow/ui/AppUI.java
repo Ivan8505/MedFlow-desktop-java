@@ -1,14 +1,13 @@
 package dev.ivanrodrigues.medflow.ui;
 
-import dev.ivanrodrigues.medflow.SessionsUsers;
+import dev.ivanrodrigues.medflow.infraestrutura.SessionsUsersDTO;
 import dev.ivanrodrigues.medflow.controller.AppUIController;
 import dev.ivanrodrigues.medflow.controller.LoginUIController;
+import dev.ivanrodrigues.medflow.infraestrutura.database.DataBaseUsersDTO;
 import dev.ivanrodrigues.medflow.rules.services.NavigationService;
-import dev.ivanrodrigues.medflow.objects.UsersDTO;
-import dev.ivanrodrigues.medflow.ui.layouts.Login;
+import dev.ivanrodrigues.medflow.rules.contracts.NavigationRules;
 import dev.ivanrodrigues.medflow.ui.layouts.Main;
 import java.awt.event.ActionEvent;
-import java.util.ArrayList;
 import javax.swing.JMenuItem;
 
 /**
@@ -18,10 +17,11 @@ import javax.swing.JMenuItem;
 public class AppUI extends javax.swing.JFrame {
 
     private final Main main;
-    private final NavigationService navC;
-    private final LoginUIController logUIC;
-    private final SessionsUsers sessions;
+    private final NavigationRules navR;
+    private final LoginUIController logC;
+    private final SessionsUsersDTO sessions;
     private final AppUIController appC;
+    private final DataBaseUsersDTO dbUsersDTO;
 
     /**
      * Creates new form App
@@ -29,12 +29,13 @@ public class AppUI extends javax.swing.JFrame {
     public AppUI() {
         initComponents();
         this.main = new Main();
-        this.sessions = new SessionsUsers();
-        this.navC = new NavigationService(main, sessions);
-        this.logUIC = new LoginUIController(navC);
-        this.appC = new AppUIController();
-        navC.registerPanels("Login", new Login(navC, logUIC));
-        login();
+        this.sessions = new SessionsUsersDTO();
+        this.appC = new AppUIController(this);
+        this.navR = new NavigationService(main, sessions, appC);
+        dbUsersDTO = new DataBaseUsersDTO();
+        this.logC = new LoginUIController(navR, dbUsersDTO);
+        add(main);
+        firstLogin();
     }
 
     /**
@@ -50,7 +51,6 @@ public class AppUI extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu8 = new javax.swing.JMenu();
-        jMenuItem2 = new javax.swing.JMenuItem();
         jMenu9 = new javax.swing.JMenu();
         jMenuItem3 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -133,11 +133,6 @@ public class AppUI extends javax.swing.JFrame {
         jMenu1.add(jMenuItem1);
 
         jMenu8.setText("Switch User");
-
-        jMenuItem2.setText("Other user");
-        jMenuItem2.addActionListener(this::jMenuItem2ActionPerformed);
-        jMenu8.add(jMenuItem2);
-
         jMenu1.add(jMenu8);
 
         jMenu9.setText("Profile");
@@ -370,11 +365,6 @@ public class AppUI extends javax.swing.JFrame {
         logout();
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        // TODO add your handling code here:
-        login();
-    }//GEN-LAST:event_jMenuItem2ActionPerformed
-
     private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
         // TODO add your handling code here:
         //editPassword();
@@ -430,7 +420,6 @@ public class AppUI extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
@@ -487,47 +476,46 @@ public class AppUI extends javax.swing.JFrame {
     //</editor-fold>
 
     //Code criado por MIM ivan8505
+    private void firstLogin() {
+        jMenuBar1.setVisible(false);
+        dbUsersDTO.addUserDB(appC.firstLogin(navR, logC));
+    }
+
     private void login() {
         jMenuBar1.setVisible(false);
-        add(main);
-        navC.showPanel("Login");
-        setTitle("Med Flow - Login");
+        appC.login(navR, logC);
     }
 
     private void logout() {
         jMenuBar1.setVisible(false);
-        navC.showPanel("Login");
+        appC.logout(navR, logC, sessions);
     }
 
-    private void levelAccess(UsersDTO user) {
-        if ("other user".equals(user.getUsername())) {
-            navC.showPanel("Login");
+    public void levelAccess(String item) {
+        if ("Other users".equals(item)) {
+            login();
         } else {
+            setTitle("Admin da porra toda");
 
         }
     }
 
-    public void setSessionMenuBar(ArrayList<UsersDTO> users) {
-        appC.setSessionsMenuBar();
-        
-        
-        
-        jMenu8.removeAll();
-
-        for (UsersDTO user : users) {
-            JMenuItem item = new JMenuItem(user.getUsername());
-            jMenu8.add(item);
-            item.addActionListener((ActionEvent e) -> {
-                levelAccess(user);
-            });
-        }
+    public void setSessionMenuBar(JMenuItem item) {
+        jMenu8.add(item);
+        item.addActionListener((ActionEvent e) -> {
+            levelAccess(item.getText());
+        });
         jMenu8.revalidate();
         jMenu8.repaint();
     }
 
-    public void addMenuSession(String item) {
-        jMenu8.add(item);
-
+    public void cleanSessionMenuBar() {
+        jMenu8.removeAll();
+        JMenuItem firstItem = new JMenuItem("Other users");
+        jMenu8.add(firstItem);
+        firstItem.addActionListener((ActionEvent e) -> {
+            levelAccess("Other users");
+        });
     }
 
     public void setMenuBarVisible(boolean visible) {

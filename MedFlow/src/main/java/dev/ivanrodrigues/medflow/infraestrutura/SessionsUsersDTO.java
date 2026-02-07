@@ -1,4 +1,4 @@
-package dev.ivanrodrigues.medflow;
+package dev.ivanrodrigues.medflow.infraestrutura;
 
 import dev.ivanrodrigues.medflow.objects.UsersDTO;
 import java.util.ArrayList;
@@ -7,11 +7,11 @@ import java.util.ArrayList;
  *
  * @author ivan8505
  */
-public class SessionsUsers {
+public class SessionsUsersDTO {
 
     private ArrayList<UsersDTO> sessions;
 
-    public SessionsUsers() {
+    public SessionsUsersDTO() {
         this.sessions = new ArrayList<>();
     }
 
@@ -25,6 +25,10 @@ public class SessionsUsers {
 
     public void addSession(UsersDTO user) {
         sessions.add(user);
+    }
+    
+    public void delSession(String username){
+        sessions.removeIf(user -> user.getUsername().equals(username));
     }
 
 }

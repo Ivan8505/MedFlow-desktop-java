@@ -12,6 +12,6 @@ public class MedFlow {
         //System.out.println("Hello World!");
         AppUI app = new AppUI();
         app.setVisible(true);
-
+        
     }
 }

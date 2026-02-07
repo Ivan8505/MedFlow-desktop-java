@@ -1,6 +1,6 @@
 package dev.ivanrodrigues.medflow.ui.layouts;
 
-import dev.ivanrodrigues.medflow.rules.services.NavigationService;
+import dev.ivanrodrigues.medflow.rules.contracts.NavigationRules;
 
 /**
  *
@@ -8,15 +8,14 @@ import dev.ivanrodrigues.medflow.rules.services.NavigationService;
  */
 public class Dashboard extends javax.swing.JPanel {
     
-    private NavigationService navC;
+    private final NavigationRules navR;
 
     /**
      * Creates new form Dashboard
      */
-    public Dashboard(NavigationService navC) {
+    public Dashboard(NavigationRules navR) {
         initComponents();
-        
-        this.navC = navC;
+        this.navR = navR;
     }
 
     /**

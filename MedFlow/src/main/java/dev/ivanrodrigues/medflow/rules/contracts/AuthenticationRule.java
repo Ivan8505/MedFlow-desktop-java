@@ -9,6 +9,8 @@ import dev.ivanrodrigues.medflow.objects.UsersDTO;
  */
 public interface AuthenticationRule {
 
-    UsersDTO login(LoginDTO loginDTO);
+    UsersDTO login(LoginDTO loginDTO, UsersDTO usersDTO);
+    
+    UsersDTO firstLogin();
 
 }

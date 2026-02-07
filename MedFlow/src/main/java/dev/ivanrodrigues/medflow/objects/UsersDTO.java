@@ -9,6 +9,7 @@ import java.util.ArrayList;
 public class UsersDTO {
 
     private String username;
+    private char[] password;
     private String fullName;
     private String setor;
     private ArrayList<String> access;
@@ -19,6 +20,14 @@ public class UsersDTO {
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public char[] getPassword() {
+        return password;
+    }
+
+    public void setPassword(char[] password) {
+        this.password = password;
     }
 
     public String getFullName() {
@@ -37,11 +46,11 @@ public class UsersDTO {
         this.setor = setor;
     }
 
-    public ArrayList getAccess() {
+    public ArrayList<String> getAccess() {
         return access;
     }
 
-    public void setAccess(ArrayList access) {
+    public void setAccess(ArrayList<String> access) {
         this.access = access;
     }
 
