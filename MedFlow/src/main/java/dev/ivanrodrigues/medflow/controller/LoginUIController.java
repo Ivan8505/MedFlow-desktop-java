@@ -1,10 +1,11 @@
 package dev.ivanrodrigues.medflow.controller;
 
-import dev.ivanrodrigues.medflow.rules.services.NavigationService;
 import dev.ivanrodrigues.medflow.objects.LoginDTO;
 import dev.ivanrodrigues.medflow.objects.UsersDTO;
 import dev.ivanrodrigues.medflow.rules.contracts.AuthenticationRule;
+import dev.ivanrodrigues.medflow.rules.contracts.NavigationRules;
 import dev.ivanrodrigues.medflow.rules.services.Authentication;
+import dev.ivanrodrigues.medflow.ui.layouts.Dashboard;
 import javax.swing.JPanel;
 
 /**
@@ -13,11 +14,11 @@ import javax.swing.JPanel;
  */
 public class LoginUIController {
 
-    private final NavigationService navC;
+    private final NavigationRules navR;
     private UsersDTO userDTO;
 
-    public LoginUIController(NavigationService navC) {
-        this.navC = navC;
+    public LoginUIController(NavigationRules navC) {
+        this.navR = navC;
     }
 
     public String login(String username, char[] passwdUser, JPanel loginUi) {
@@ -38,7 +39,9 @@ public class LoginUIController {
     }
 
     private void registerSession(UsersDTO usersDTO) {
-        navC.session(usersDTO);
-        
+        navR.session(usersDTO);
+        navR.registerPanels("Dashboard", new Dashboard(navR));
+        navR.showPanel("Dashboard");
+        navR.setTitle("Med Flow - Dashboard");
     }
 }

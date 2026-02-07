@@ -1,7 +1,7 @@
 package dev.ivanrodrigues.medflow.ui.layouts;
 
 import dev.ivanrodrigues.medflow.controller.LoginUIController;
-import dev.ivanrodrigues.medflow.rules.services.NavigationService;
+import dev.ivanrodrigues.medflow.rules.contracts.NavigationRules;
 import javax.swing.JOptionPane;
 
 /**
@@ -12,7 +12,7 @@ public class Login extends javax.swing.JPanel {
 
     private final LoginUIController logC;
 
-    public Login(NavigationService navC, LoginUIController logUIC) {
+    public Login(NavigationRules navR, LoginUIController logUIC) {
         this.logC = logUIC;
         initComponents();
 
